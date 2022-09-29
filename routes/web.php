@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 
@@ -14,8 +16,10 @@ use App\Http\Controllers\HomeController;
 |
 */
 
-Route::get('/',[HomeController::class, 'show']);
+Route::get('/projects',[ProjectController::class, 'show']);
 
-Route::get('/products', function () {
-    return view('products');
-})->name('products');
+Route::get('/user',[UserController::class, 'show']);
+
+Auth::routes();
+
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

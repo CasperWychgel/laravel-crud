@@ -6,10 +6,23 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    public function show()
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
     {
-        $title = "Dit is een site";
-        $text = "lorem ipsum dolor";
-        return view('home', compact('title','text'));
+        $this->middleware('auth');
+    }
+
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function index()
+    {
+        return view('home');
     }
 }
